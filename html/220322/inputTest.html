@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inputTest</title>
+</head>
+
+<body>
+    <p>
+        <!-- label 으로 영역을 지정하면 label의 영역을 클릭해도 안의 input 태그에 접근?이 가능하다.-->
+        <label>
+            text<br>
+            <input type="text" placeholder="한줄 입력 가능" />
+        </label>
+    </p>
+    <p>
+        <label>
+            password<br>
+            <input type="password" placeholder="비밀번호 입력" />
+        </label>
+    </p>
+    <p>
+        <label>
+            email<br>
+            <input type="email" />
+        </label>
+    </p>
+    <p>
+        <label>
+            date<br>
+            <!--datepicker 구현 따로 안해도 input 태그에서 타입으로 날짜 선택 구현이 가능하다.-->
+            <input type="date" />
+        </label>
+    </p>
+</body>
+
+</html>
