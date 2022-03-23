@@ -1,14 +1,80 @@
+body{
+    background:#718F94;
+}
+header{
+    display: flex;
+}
+#titleText{
+    margin-bottom: 7px;
+    font-size: 20pt;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 td section{
+    font-size: 8pt;
     overflow: auto;
-    height: 80px;
+    height: 120px;
+}
+td input{
+    font-size: 8pt
 }
 td{
-    height: 120px;
+    width: auto;
+    height: 170px;
     border: 1px solid;
+    background: white;
 }
 table{
-    border: 1px solid;
+    width: 100%;
+    border: none;
+    background: black;
 }
 tr{
     height: 80px;
+}
+
+#resetBtn{
+    margin-top: 7.5px;
+    margin-left: 10px;
+    width: fit-content;
+    height: fit-content;
+    background: black;
+    color: whitesmoke;
+    border: none;
+    border-radius: 10%;
+}
+#deleteBtn{
+    width: 15px;
+    height: 15px;
+    font-size: 1pt;
+    
+    padding: 0%;
+    margin-left: 3px;
+    border:1px solid;
+    background:white;
+}
+#checkBtn{
+    width: 15px;
+    height: 15px;
+    font-size: 1pt;
+    
+    padding: 0%;
+    margin-left: 5px;
+    border:1px solid;
+    background:white;
+}
+#allDelBtn{
+    background:#718F94;
+    color: white;
+    border:none;
+    border-radius: 10%;
+    margin-bottom: 5px;
+}
+#inputBtn{
+    background:#545775;
+    color:white;
+    border:none;
+    border-radius: 20%;
+    margin-left: 3px;
 }
