@@ -1,3 +1,14 @@
+td section{
+    overflow: auto;
+    height: 80px;
+}
 td{
-    overflow: scroll;
+    height: 120px;
+    border: 1px solid;
+}
+table{
+    border: 1px solid;
+}
+tr{
+    height: 80px;
 }
