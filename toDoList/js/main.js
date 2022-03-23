@@ -73,28 +73,29 @@ function addToDo(e) {
 
 function drawCalender(){
     let weekNo =1;
-    let dayNo = 1;
+    let dayNo = -1;
     
     for(let i =0;i<5;i++){
         if(dayNo<32){
             const week = document.createElement("tr");
             week.id = weekNo;
             for(let j =0;j<7;j++){
-                if(dayNo<32){
-                    let day = document.createElement("td");
-                    const dayDiv1 = document.createElement("div");
-                    const dayDiv2 = document.createElement("div");
-                    const dayToDoList = document.createElement("section");
-                    day.id="day"+dayNo;
-                    dayToDoList.id = "dayToDoList"+day.id;
-                    dayDiv1.innerHTML = dayNo;
+                
+                let date = document.createElement("td");
+                const dayDiv1 = document.createElement("div");
+                const dayDiv2 = document.createElement("div");
+                const dayToDoList = document.createElement("section");
+                date.id="day"+dayNo;
+                dayToDoList.id = "dayToDoList" + date.id;
+                if (dayNo>0&&dayNo < 32) {
+                    dayDiv1.innerHTML = dayNo + getDay(dayNo);
                     dayDiv2.innerHTML = inputBox;
-                    day.appendChild(dayDiv1);
-                    day.appendChild(dayDiv2);
-                    day.appendChild(dayToDoList);
-                    week.appendChild(day);
-                    dayNo++;
-                }else{break;}
+                }
+                date.appendChild(dayDiv1);
+                date.appendChild(dayDiv2);
+                date.appendChild(dayToDoList);
+                week.appendChild(date);
+                dayNo++;
             }
             weekNo++;
             calenderTable.appendChild(week);
@@ -104,3 +105,23 @@ function drawCalender(){
     }
 }
 
+function getDay(date) {
+    switch (date%7) {
+        case 0:
+            return '월';
+        case 1:
+            return '화';
+        case 2:
+            return '수';
+        case 3:
+            return '목';
+        case 4:
+            return '금';
+        case 5:
+            return '토';
+        case 6:
+            return '일';
+        default:
+            return null;
+    }
+}
