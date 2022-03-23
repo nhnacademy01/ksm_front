@@ -1,16 +1,20 @@
 const calenderTable = document.getElementById("calenderTable");
 
 const inputBox = `<span id="span"><input id="inputBox" type="input" placeholder="할 일을 입력하세요">
-    <input id="inputBtn" type="button" value="추가" ></span>`
+    <input id="inputBtn" type="button" value="추가" ><input id="allDelBtn" type="button" value="전체 삭제" ></span>`
 
 let todos = [];
+let todoid = 0;
 
 window.onload=()=>{
-    makeCalender();
-   if(localStorage.getItem('todoList')!=null){
-       
+    drawCalender();
+    if(localStorage.getItem('todoId')!=null){
+        todoid=localStorage.getItem('todoId');
+    } else {
+        todoid = 0;
+    }
+    if(localStorage.getItem('todoList')!=null){
         todos = JSON.parse(localStorage.getItem('todoList'));
-        console.log(todos)
         for(let i =1;i<32;i++){
             let a = todos.filter(todo=>todo.day==="day"+i);
             if(a!=null){
@@ -22,27 +26,52 @@ window.onload=()=>{
     }
 }
 
-let todoid = 0;
-calenderTable.onclick = function(e){ // 이벤트 위임
-    if(e.target.id=='inputBtn'){
-        const todoContent = e.target.parentNode.firstChild.value;
-        //여기 투두id 수정하기
-        const toDo = `<span id ="${todoid}"><div>${todoContent}</div><input id="deleteBtn" type="button" value="삭제" /></span>`
-        const todoBox = e.target.parentNode.parentNode.parentNode.lastChild;
-        const day = todoBox.parentNode.id;
-        todos.push({id:day+"-"+todoid,day:day,todo:toDo});
-        localStorage.setItem('todoList',JSON.stringify(todos));
-        todoBox.innerHTML+=toDo;
-    }//여기 삭제 수정하기
-    if(e.target.id=='deleteBtn'){
-        const deleteDay = e.target.parentNode.parentNode.parentNode.id;
-        console.log(todoBox);
-        console.log(todos);
+calenderTable.onclick = function (e) {
+    // 추가
+    if (e.target.id === 'inputBtn') {
+        addToDo(e);
     }
-    todoid++;
+    // 삭제
+    if(e.target.id==='deleteBtn'){
+        deleteToDo(e);
+    }
+    // 전체 삭제
+    if (e.target.id === 'allDelBtn') {
+        deleteOneDayToDo(e);
+    }
 }
 
-function makeCalender(){
+function deleteOneDayToDo(e) {
+    const allDeleteDay = e.target.parentNode.parentNode.parentNode.id;
+    todos = todos.filter(todo => todo.day != allDeleteDay);
+    localStorage.setItem('todoList', JSON.stringify(todos));
+    window.location.reload();
+}
+
+function deleteToDo(e) {
+    const deleteDay = e.target.parentNode;
+    todos = todos.filter(todo => todo.id != deleteDay.id);
+    localStorage.setItem('todoList', JSON.stringify(todos));
+    window.location.reload();
+}
+
+function addToDo(e) {
+    todoid++;
+    localStorage.setItem('todoId', todoid);
+    const inputToDo = e.target.parentNode.firstChild;
+    const todoContent = inputToDo.value;
+    const todoBox = e.target.parentNode.parentNode.parentNode.lastChild;
+    const day = todoBox.parentNode.id;
+    if (todoContent != "") { 
+        const toDo = `<div id ="${day + "-" + todoid}" style="display:flex"><div>${todoContent}</div><input id="deleteBtn" type="button" value="❌" /></div>`
+        todos.push({ id: day + "-" + todoid, day: day, todo: toDo });
+        localStorage.setItem('todoList', JSON.stringify(todos));
+        todoBox.innerHTML += toDo;
+    }
+    inputToDo.value = "";
+}
+
+function drawCalender(){
     let weekNo =1;
     let dayNo = 1;
     
@@ -55,7 +84,7 @@ function makeCalender(){
                     let day = document.createElement("td");
                     const dayDiv1 = document.createElement("div");
                     const dayDiv2 = document.createElement("div");
-                    const dayToDoList = document.createElement("div");
+                    const dayToDoList = document.createElement("section");
                     day.id="day"+dayNo;
                     dayToDoList.id = "dayToDoList"+day.id;
                     dayDiv1.innerHTML = dayNo;
