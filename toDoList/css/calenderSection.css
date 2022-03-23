@@ -1,0 +1,15 @@
+td section{
+    font-size: 10pt;
+    overflow: auto;
+    height: 80px;
+}
+td{
+    height: 120px;
+    border: 1px solid;
+}
+table{
+    border: 1px solid;
+}
+tr{
+    height: 80px;
+}
