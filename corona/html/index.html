@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORONA-19</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../js/index.js"></script>
+    <script type="text/javascript" src="../../apiKey/apikey.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <header>
+        코로나 19 현황
+    </header>
+    <main>
+        <table>
+            <thead>
+                <th>기준일</th>
+                <th>누적(확진자수)</th>
+                <th>누적(사망자수)</th>
+                <th>update</th>
+            </thead>
+            <tbody id="coronaData">
+
+            </tbody>
+        </table>
+        <div id="linechart_material" style="width: 900px; height: 500px"></div>
+    </main>
+</body>
+
+</html>
