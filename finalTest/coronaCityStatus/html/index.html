@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국내 코로나 발생 현황</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <script defer src="../js/index.js"></script>
+    <script type="text/javascript" src="../../apiKey/apikey.js"></script>
+</head>
+
+<body>
+    <header>
+        <hr>
+        <span>코로나 발생 국내 현황</span>
+        <hr>
+    </header>
+    <main>
+        <section>
+            <div id="today"></div>
+            <div id="standard">(기준)</div>
+        </section>
+        <section id="tableSection">
+            <table>
+                <thead>
+                    <tr id="theadTr">
+                        <th>지역</th>
+                        <th>누적 확진자</th>
+                        <th>누적 사망자</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+            <div id="pageController">
+                <button id="beforeBtn">&lt;</button>
+                <div id="pageDiv">
+                    <div id="pageContainer"></div>
+                    /
+                    <div id="lastPageContainer"></div>
+                </div>
+                <button id="nextBtn">&gt;</button>
+            </div>
+            <a id="home" href="../../main.html">Home</a>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        SEMI
+        <hr>
+    </footer>
+</body>
+
+</html>
